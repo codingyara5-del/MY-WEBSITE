@@ -1,0 +1,251 @@
+/* Cinematic crystallization experience styles */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body, html{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#f0f0f0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.full-screen{
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(240,240,240,0.8);
+    z-index:100;
+}
+
+.title-text h1,
+.title-text h2{
+    color:#333;
+    text-align:center;
+    opacity:0;
+    animation:fadeInText 3s forwards;
+}
+
+.title-text h1{
+    font-size:3em;
+    font-weight:700;
+    margin-bottom:0.5em;
+}
+
+.title-text h2{
+    font-size:1.5em;
+    font-weight:400;
+    animation-delay:1.5s;
+}
+
+@keyframes fadeInText{
+    to{opacity:1;}
+}
+
+#scene-container{
+    width:100%;
+    height:100%;
+    position:relative;
+    overflow:hidden;
+}
+
+/* heat shimmer effect: subtle moving noise overlay */
+#scene-container::after {
+    content:'';
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:100%;
+    pointer-events:none;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==') repeat;
+    opacity:0.07;
+    animation:heatShimmer 1.5s infinite;
+}
+
+@keyframes heatShimmer{
+    from{transform:translate(0,0);} to{transform:translate(0,10px);} }
+
+#ui-controls{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:15px;
+    z-index:50;
+}
+
+#ui-controls button{
+    padding:12px 24px;
+    border:none;
+    border-radius:25px;
+    background:linear-gradient(135deg,#4a90e2,#2e5c8a);
+    color:#fff;
+    font-size:14px;
+    cursor:pointer;
+    transition:transform 0.2s,box-shadow 0.2s;
+}
+
+#ui-controls button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(74,144,226,0.4);
+}
+
+#analysis-overlays{
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:100%;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity 0.6s;
+    z-index:40;
+}
+
+#analysis-overlays.visible{
+    opacity:1;
+}
+
+.overlay-element{
+    position:absolute;
+    color:rgba(255,255,255,0.9);
+    font-size:14px;
+    font-weight:600;
+    text-shadow:0 0 6px rgba(0,0,0,0.5);
+    opacity:0;
+    animation:overlayFade 1s forwards;
+}
+
+@keyframes overlayFade{
+    to{opacity:1;}
+}
+
+#analysis-overlays .overlay-element{
+    /* individual overlays will be positioned by JS for cinematic effect */
+    padding:4px 8px;
+    border:1px solid rgba(255,255,255,0.6);
+    border-radius:4px;
+    background:rgba(0,0,0,0.2);
+    font-size:13px;
+}
+
+/* specific subtle indicators */
+#molecule-diagram::before {
+    content:'⚛';
+    margin-right:4px;
+}
+#crystal-grid::before {
+    content:'▦';
+    margin-right:4px;
+}
+#temp-indicator::before {
+    content:'🌡';
+    margin-right:4px;
+}
+#label-supersat::before { content:'↑'; margin-right:4px; }
+#label-nucleation::before { content:'•'; margin-right:4px; }
+#label-exotherm::before { content:'🔥'; margin-right:4px; }
+#label-lattice::before { content:'⌗'; margin-right:4px; }
+
+/* guide character styles */
+#guide-character{
+    position:fixed;
+    bottom:80px;
+    right:40px;
+    width:120px;
+    z-index:60;
+}
+
+#guide-body{
+    position:relative;
+    width:100%;
+    animation:guide-breathe 4s ease-in-out infinite;
+}
+
+@keyframes guide-breathe{
+    0%,100%{transform:scaleY(1);}50%{transform:scaleY(1.02);}
+}
+
+#guide-head{
+    position:relative;
+    width:50px;height:50px;
+    background:#fdd7a8;
+    border-radius:50%;
+    margin:0 auto;
+}
+
+.eye{
+    position:absolute;
+    width:8px;height:8px;
+    background:#333;
+    border-radius:50%;
+    top:18px;
+    animation:blink 3s infinite;
+}
+.eye.left{left:12px;}
+.eye.right{right:12px;}
+
+@keyframes blink{
+    0%,90%,100%{transform:scaleY(1);}95%{transform:scaleY(0.1);}
+}
+
+.mouth{
+    position:absolute;
+    width:16px;height:8px;
+    border:2px solid #333;
+    border-top:none;
+    border-radius:0 0 8px 8px;
+    bottom:10px;
+    left:50%;transform:translateX(-50%);
+    animation:talk 1s ease-in-out infinite;
+}
+
+@keyframes talk{
+    0%,100%{transform:translateX(-50%) scaleY(1);}50%{transform:translateX(-50%) scaleY(1.3);}
+}
+
+#guide-torso{
+    width:40px;height:50px;
+    background:#b84c3d;
+    border-radius:10px;
+    margin:0 auto;
+    position:relative;
+    top:10px;
+}
+
+.arm{
+    position:absolute;
+    width:12px;height:40px;
+    background:#fdd7a8;
+    border-radius:6px;
+    top:40px;
+    transform-origin:top;
+    animation:arm-gesture 3s ease-in-out infinite;
+}
+.arm.left{left:0;}
+.arm.right{right:0;animation-delay:0.5s;}
+
+@keyframes arm-gesture{
+    0%,100%{transform:rotate(-10deg);}50%{transform:rotate(20deg);}
+}
+
+.speech-bubble{
+    position:absolute;
+    bottom:120px;
+    right:0;
+    background:white;
+    border-radius:15px;
+    padding:12px 18px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+    max-width:200px;
+    animation:bubble-appear 0.4s ease-out;
+}
+
+@keyframes bubble-appear{
+    from{opacity:0;transform:translateY(10px);} to{opacity:1;transform:translateY(0);} }
+
+#crackle-sound{display:none;}
+

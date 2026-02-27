@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Ice – Sodium Acetate Crystallization Experience</title>
+    <link rel="stylesheet" href="hot_ice.css">
+    <!-- Three.js from CDN for 3D rendering. fall back to local copy if network fails -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" onerror="this.onerror=null;this.src='three.min.js'"></script>
+    <!-- Three.js postprocessing for depth-of-field. local copies are available for offline use -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/postprocessing/EffectComposer.js" onerror="this.onerror=null;this.src='EffectComposer.js'"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/postprocessing/RenderPass.js" onerror="this.onerror=null;this.src='RenderPass.js'"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/postprocessing/BokehPass.js" onerror="this.onerror=null;this.src='BokehPass.js'"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/postprocessing/ShaderPass.js" onerror="this.onerror=null;this.src='ShaderPass.js'"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/shaders/CopyShader.js" onerror="this.onerror=null;this.src='CopyShader.js'"></script>
+    <!-- early check to ensure Three.js loaded; if not, display persistent message -->
+    <script>
+        if (typeof THREE === 'undefined') {
+            console.error('Three.js did not load from CDN or local file');
+            document.body.insertAdjacentHTML('afterbegin',
+                '<div style="position:absolute;top:0;left:0;width:100%;background:#900;color:#fff;padding:10px;z-index:999;">' +
+                'Error: Three.js library is missing. ' +
+                'Open the page via a local HTTP server or ensure network connectivity. ' +
+                'See README.md for instructions.</div>'
+            );
+        }
+    </script>
+</head>
+<body>
+    <div id="intro-overlay" class="full-screen">
+        <div id="intro-text" class="title-text">
+            <h1>Hot Ice – Sodium Acetate Crystallization Experience</h1>
+            <h2>Prepared by Hadil Yara Dakhia</h2>
+            <p style="margin-top:1em;font-size:1.1em;opacity:0.9;">Click anywhere to begin the experience. The scene will automatically start.</p>
+        </div>
+    </div>
+
+    <div id="scene-container"></div>
+
+    <!-- UI Controls -->
+    <div id="ui-controls">
+        <button id="start-crystallization">Start Crystallization</button>
+        <button id="toggle-analysis">Scientific Analysis Mode</button>
+    </div>
+
+    <!-- Analysis Overlays -->
+    <div id="analysis-overlays" class="hidden">
+        <div class="overlay-element" id="molecule-diagram">[Molecular Structure Diagram]</div>
+        <div class="overlay-element" id="crystal-grid">[Crystal Lattice Grid]</div>
+        <div class="overlay-element" id="temp-indicator">Temp ↑</div>
+        <div class="overlay-element" id="label-supersat">Supersaturation</div>
+        <div class="overlay-element" id="label-nucleation">Nucleation</div>
+        <div class="overlay-element" id="label-exotherm">Exothermic Reaction</div>
+        <div class="overlay-element" id="label-lattice">Crystal Lattice Formation</div>
+    </div>
+
+    <!-- Guide Character -->
+    <div id="guide-character">
+        <!-- simple SVG or div-based character for demonstration -->
+        <div id="guide-body">
+            <div id="guide-head">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+                <div class="mouth"></div>
+            </div>
+            <div id="guide-torso"></div>
+            <div class="arm left"></div>
+            <div class="arm right"></div>
+        </div>
+        <div id="guide-speech" class="speech-bubble"><p id="guide-text">Welcome to the hot ice crystallization experiment. Click start when ready.</p></div>
+    </div>
+
+    <audio id="crackle-sound"></audio>
+
+    <script src="hot_ice.js"></script>
+</body>
+</html>

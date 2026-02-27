@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Science Experiment: Acid-Base Reaction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Background and Lighting -->
+        <div class="environment">
+            <!-- Soft ambient lighting -->
+            <div class="light ambient-light"></div>
+            <div class="light key-light"></div>
+            <div class="light fill-light"></div>
+        </div>
+
+        <!-- Main Scene Container -->
+        <div class="scene-container">
+            <!-- Wooden Table -->
+            <div class="wooden-table">
+                <div class="table-surface">
+                    <div class="table-shadow"></div>
+                </div>
+
+                <!-- Main Experiment Area -->
+                <div class="experiment-area">
+                    <!-- Erlenmeyer Flask (Main Reaction Container) -->
+                    <div class="container-group">
+                        <div class="flask-support">
+                            <svg class="erlenmeyer-flask" viewBox="0 0 200 300" width="200" height="300">
+                                <!-- Flask body -->
+                                <defs>
+                                    <linearGradient id="flaskGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#e8f4f8;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.7" />
+                                        <stop offset="100%" style="stop-color:#c0e4f0;stop-opacity:1" />
+                                    </linearGradient>
+                                    <radialGradient id="bubbleGradient" cx="30%" cy="30%">
+                                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
+                                        <stop offset="100%" style="stop-color:#a0d8f0;stop-opacity:0.3" />
+                                    </radialGradient>
+                                </defs>
+                                <!-- Flask outline -->
+                                <path d="M 60 40 L 70 80 L 30 150 L 30 240 Q 30 260 50 260 L 150 260 Q 170 260 170 240 L 170 150 L 130 80 L 140 40 Z" 
+                                      fill="url(#flaskGradient)" stroke="#9bb5c8" stroke-width="2" opacity="0.95"/>
+                                <!-- Flask neck -->
+                                <rect x="85" y="20" width="30" height="20" fill="none" stroke="#9bb5c8" stroke-width="2" opacity="0.95"/>
+                                <!-- Light reflection -->
+                                <ellipse cx="90" cy="100" rx="15" ry="40" fill="#ffffff" opacity="0.2"/>
+                            </svg>
+
+                            <!-- Liquid and Reaction Content Inside Flask -->
+                            <div class="flask-content">
+                                <!-- Liquid Level -->
+                                <div class="liquid-level"></div>
+                                <!-- Bubbles (CO2 particles) -->
+                                <div class="bubbles-container">
+                                    <div class="bubble bubble-1"></div>
+                                    <div class="bubble bubble-2"></div>
+                                    <div class="bubble bubble-3"></div>
+                                    <div class="bubble bubble-4"></div>
+                                    <div class="bubble bubble-5"></div>
+                                </div>
+                                <!-- Foam Layer -->
+                                <div class="foam-layer"></div>
+                            </div>
+                        </div>
+
+                        <!-- Material Labels -->
+                        <div class="material-label" id="flask-label">Erlenmeyer Flask</div>
+                    </div>
+
+                    <!-- Baking Soda Bowl -->
+                    <div class="container-group">
+                        <div class="bowl-container">
+                            <div class="bowl">
+                                <div class="bowl-inner">
+                                    <div class="baking-soda-powder">
+                                        <div class="powder-particle"></div>
+                                        <div class="powder-particle"></div>
+                                        <div class="powder-particle"></div>
+                                        <div class="powder-particle"></div>
+                                        <div class="powder-particle"></div>
+                                    </div>
+                                </div>
+                                <div class="bowl-shadow"></div>
+                            </div>
+                            <div class="material-label">Baking Soda (NaHCO₃)</div>
+                        </div>
+
+                        <!-- Spoon for Baking Soda -->
+                        <div class="spoon-holder">
+                            <svg class="metal-spoon" viewBox="0 0 100 150" width="80" height="120">
+                                <defs>
+                                    <linearGradient id="spoonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#e8e8e8;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#a0a0a0;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#707070;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Spoon bowl -->
+                                <ellipse cx="50" cy="40" rx="20" ry="25" fill="url(#spoonGradient)" stroke="#505050" stroke-width="1"/>
+                                <!-- Spoon handle -->
+                                <path d="M 50 65 Q 48 90 50 120" fill="none" stroke="url(#spoonGradient)" stroke-width="8" stroke-linecap="round"/>
+                                <!-- Highlight -->
+                                <ellipse cx="40" cy="35" rx="8" ry="12" fill="#ffffff" opacity="0.3"/>
+                            </svg>
+                            <div class="material-label">Metal Spoon</div>
+                        </div>
+                    </div>
+
+                    <!-- Vinegar Container -->
+                    <div class="container-group">
+                        <div class="vinegar-bottle">
+                            <svg class="bottle-shape" viewBox="0 0 120 200" width="100" height="170">
+                                <defs>
+                                    <linearGradient id="bottleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#f0f5e8;stop-opacity:0.85" />
+                                        <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.6" />
+                                        <stop offset="100%" style="stop-color:#d9e6d0;stop-opacity:0.85" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Bottle body -->
+                                <path d="M 40 50 L 35 120 Q 35 150 60 160 L 60 160 Q 85 150 85 120 L 80 50 Z" 
+                                      fill="url(#bottleGradient)" stroke="#a8b8a0" stroke-width="1.5" opacity="0.9"/>
+                                <!-- Bottle neck -->
+                                <rect x="52" y="30" width="16" height="20" fill="url(#bottleGradient)" stroke="#a8b8a0" stroke-width="1.5" opacity="0.9"/>
+                                <!-- Liquid inside (vinegar golden tone) -->
+                                <path d="M 38 100 L 37 130 Q 37 145 60 152 L 60 152 Q 83 145 83 130 L 82 100 Z" 
+                                      fill="#d4a76a" opacity="0.4"/>
+                                <!-- Reflection -->
+                                <ellipse cx="45" cy="80" rx="10" ry="30" fill="#ffffff" opacity="0.15"/>
+                            </svg>
+                            <div class="bottle-label">Vinegar (CH₃COOH)</div>
+                            <div class="material-label">Clear Liquid</div>
+                        </div>
+                    </div>
+
+                    <!-- Food Coloring (Optional) -->
+                    <div class="container-group">
+                        <div class="food-coloring-container">
+                            <div class="coloring-bottle" style="--color-hue: 210;">
+                                <div class="coloring-liquid"></div>
+                            </div>
+                            <div class="material-label">Food Coloring<br>(Optional)</div>
+                        </div>
+                    </div>
+
+                    <!-- Glass Beaker -->
+                    <div class="container-group">
+                        <div class="beaker-container">
+                            <svg class="beaker" viewBox="0 0 100 150" width="90" height="140">
+                                <defs>
+                                    <linearGradient id="beakerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#e8f4f8;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.7" />
+                                        <stop offset="100%" style="stop-color:#c0e4f0;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Beaker body -->
+                                <path d="M 25 40 L 20 130 Q 20 145 35 145 L 65 145 Q 80 145 80 130 L 75 40 Z" 
+                                      fill="url(#beakerGradient)" stroke="#9bb5c8" stroke-width="1.5" opacity="0.95"/>
+                                <!-- Beaker spout -->
+                                <path d="M 75 70 L 85 65" fill="none" stroke="#9bb5c8" stroke-width="1.5" opacity="0.95"/>
+                                <!-- Measurement lines -->
+                                <g stroke="#9bb5c8" stroke-width="0.8" opacity="0.5">
+                                    <line x1="15" y1="80" x2="25" y2="80"/>
+                                    <line x1="15" y1="100" x2="25" y2="100"/>
+                                    <line x1="15" y1="120" x2="25" y2="120"/>
+                                </g>
+                            </svg>
+                            <div class="material-label">Glass Beaker</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Control Panel -->
+                <div class="control-panel">
+                    <h1 class="experiment-title">Acid-Base Reaction Experiment</h1>
+                    
+                    <!-- Action Buttons -->
+                    <div class="button-group">
+                        <button class="action-button" id="add-baking-soda-btn" data-action="add-baking-soda">
+                            <span class="button-text">Add Baking Soda</span>
+                            <span class="button-step">Step 1</span>
+                        </button>
+                        <button class="action-button" id="add-coloring-btn" data-action="add-coloring">
+                            <span class="button-text">Add Food Coloring</span>
+                            <span class="button-step">Step 2 (Optional)</span>
+                        </button>
+                        <button class="action-button" id="add-vinegar-btn" data-action="add-vinegar">
+                            <span class="button-text">Add Vinegar</span>
+                            <span class="button-step">Step 3</span>
+                        </button>
+                        <button class="action-button reset-btn" id="reset-btn">
+                            Reset Experiment
+                        </button>
+                    </div>
+
+                    <!-- Progress Indicator -->
+                    <div class="progress-section">
+                        <h3>Progress</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <div class="step-indicators">
+                            <div class="step-indicator" id="step-1">
+                                <div class="step-number">1</div>
+                                <div class="step-label">Baking Soda</div>
+                            </div>
+                            <div class="step-indicator" id="step-2">
+                                <div class="step-number">2</div>
+                                <div class="step-label">Coloring</div>
+                            </div>
+                            <div class="step-indicator" id="step-3">
+                                <div class="step-number">3</div>
+                                <div class="step-label">Vinegar</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status Message -->
+                    <div class="status-message" id="status-message"></div>
+                </div>
+            </div>
+
+            <!-- Animated Guide Character -->
+            <div class="guide-character" id="guide-character">
+                <div class="guide-body">
+                    <div class="guide-head">
+                        <div class="guide-face">
+                            <div class="guide-eye left"></div>
+                            <div class="guide-eye right"></div>
+                            <div class="guide-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="guide-body-shape"></div>
+                    <div class="guide-arm left"></div>
+                    <div class="guide-arm right"></div>
+                </div>
+                <div class="guide-speech-bubble" id="guide-speech">
+                    <p id="guide-text">Welcome! Let's learn about acid-base reactions. Start by adding baking soda to the flask.</p>
+                    <div class="speech-arrow"></div>
+                </div>
+            </div>
+
+            <!-- Information Panel -->
+            <div class="info-panel">
+                <h2>Scientific Concepts</h2>
+                <div class="info-content" id="info-content">
+                    <div class="info-section" id="info-intro">
+                        <h3>Acid-Base Reaction</h3>
+                        <p>An acid-base reaction occurs when an acid (like vinegar) reacts with a base (like baking soda). This produces new substances and often releases gas.</p>
+                    </div>
+                </div>
+                <button class="close-info-btn" id="close-info-btn">×</button>
+            </div>
+        </div>
+
+        <!-- Sound Controls -->
+        <div class="audio-controls">
+            <button class="audio-toggle" id="audio-toggle" title="Toggle Sound">
+                <span class="audio-icon">🔊</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
